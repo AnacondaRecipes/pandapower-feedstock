@@ -17,9 +17,10 @@ build:
 
 requirements:
   host:
+    - python
     - pip
     - setuptools
-    - python {{ python_min }}
+    - wheel
   run:
     - python >={{ python_min }}
     - deepdiff
