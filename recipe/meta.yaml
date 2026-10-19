@@ -22,17 +22,19 @@ requirements:
     - setuptools
     - wheel
   run:
-    - python >={{ python_min }}
-    - deepdiff
-    - networkx >=2.5
-    - numpy
-    - packaging
-    - pandas >=1.0
-    - scipy <1.14
-    - tqdm
-    - geojson
-    - lxml
-    - typing_extensions ~=4.9
+    - python
+    - pandas >=2.3,<3
+    - networkx >=3.6,<4  # [py>=311]
+    - networkx >=3.4,<4  # [py==310]
+    - scipy >=1.15
+    - numpy >=1.26,<2.5
+    - packaging >=26.0,<27
+    - tqdm >=4.68,<5
+    - colorama ==0.4.6
+    - deepdiff >=9.1,<10
+    - geojson >=3.3,<4
+    - typing_extensions >=4.16,<5
+    - pandera >=0.32,<1
 
 test:
   imports:
