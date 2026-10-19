@@ -78,6 +78,9 @@ test:
 about:
   home: https://www.pandapower.org
   summary: An easy to use open source tool for power system modeling, analysis and optimization with a high degree of automation.
+  description: |
+    pandapower combines the data analysis library pandas and the power flow solver PYPOWER to create an
+    easy to use network calculation program aimed at automation of analysis and optimization in power systems.
   license: BSD-3-Clause
   license_file: LICENSE
 
