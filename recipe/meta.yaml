@@ -46,7 +46,7 @@ test:
     - pip check
 
 about:
-  home: http://www.pandapower.org
+  home: https://www.pandapower.org
   summary: An easy to use open source tool for power system modeling, analysis and optimization with a high degree of automation.
   license: BSD-3-Clause
   license_file: LICENSE
