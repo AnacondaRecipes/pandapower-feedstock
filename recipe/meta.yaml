@@ -39,11 +39,11 @@ requirements:
 test:
   imports:
     - pandapower
-  commands:
-    - pip check
   requires:
     - pip
-    - python {{ python_min }}
+    - python
+  commands:
+    - pip check
 
 about:
   home: http://www.pandapower.org
