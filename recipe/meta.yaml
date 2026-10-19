@@ -83,6 +83,8 @@ about:
     easy to use network calculation program aimed at automation of analysis and optimization in power systems.
   license: BSD-3-Clause
   license_file: LICENSE
+  dev_url: https://github.com/e2nIEE/pandapower
+  doc_url: https://pandapower.readthedocs.io
 
 extra:
   recipe-maintainers:
