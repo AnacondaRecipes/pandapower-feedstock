@@ -38,8 +38,8 @@ requirements:
   run_constrained:
     # plotting
     - plotly >=6.8,<7
-    - matplotlib >=3.11,<4  # [py>311]
-    - matplotlib >=3.10,<4  # [py==310]
+    - matplotlib-base >=3.11,<4  # [py>311]
+    - matplotlib-base >=3.10,<4  # [py==310]
     - geopandas >=1.1,<2
     # performance
     - ortools >=9.15,<10
