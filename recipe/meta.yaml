@@ -1,5 +1,5 @@
 {% set name = "pandapower" %}
-{% set version = "3.2.1" %}
+{% set version = "3.5.6" %}
 
 
 package:
@@ -8,45 +8,84 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: c73648cd0db693a9b7551daa1f2a15f16a50c5b67944797ebda9f3e3a27017ef
+  sha256: 41820e7f365ed76e71d82adb7063006a44c4b4d21c3012fc382e83e8f5e32cd8
 
 build:
   number: 0
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  skip: true  # [py<310]
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
+    - python
     - pip
     - setuptools
-    - python {{ python_min }}
+    - wheel
   run:
-    - python >={{ python_min }}
-    - deepdiff
-    - networkx >=2.5
-    - numpy
-    - packaging
-    - pandas >=1.0
-    - scipy <1.14
-    - tqdm
-    - geojson
-    - lxml
-    - typing_extensions ~=4.9
+    - python
+    - pandas >=2.3,<3
+    - networkx >=3.6,<4  # [py>=311]
+    - networkx >=3.4,<4  # [py==310]
+    - scipy >=1.15
+    - numpy >=1.26,<2.5
+    - packaging >=26.0,<27
+    - tqdm >=4.68,<5
+    - colorama ==0.4.6
+    - deepdiff >=9.1,<10
+    - geojson >=3.3,<4
+    - typing_extensions >=4.16,<5
+    - pandera >=0.32,<1
+  run_constrained:
+    # plotting
+    - plotly >=6.8,<7
+    - matplotlib-base >=3.11,<4  # [py>311]
+    - matplotlib-base >=3.10,<4  # [py==310]
+    - geopandas >=1.1,<2
+    # performance
+    - ortools >=9.15,<10
+    - numba >=0.66,<1
+    - lightsim2grid >=0.13.0,<0.14
+    # fileio
+    - xlsxwriter >=3.2,<3
+    - openpyxl >=3.1,<4
+    - cryptography >=49.0,<50
+    #- geopandas >=1.1,<2
+    - psycopg >=3.2,<4
+    - lxml >=6.1,<7
+    # converter
+    - matpowercaseframes >=2.1,<3
+    #- lxml >=6.1,<7
+    - pypowsybl >=1.15,<2
+    # pgm
+    - power-grid-model-io >=1.2,<2  # [py<=311]
+    - power-grid-model-io >=1.3.87,<1.4  # [py>311]
+    # control
+    - shapely >=2.1,<2
+    # pandamodels
+    - juliacall <=0.9.32
+    # opendss
+    - OpenDSSDirect.py >=0.9,<1
 
 test:
   imports:
     - pandapower
-  commands:
-    - pip check
   requires:
     - pip
-    - python {{ python_min }}
+    - python
+  commands:
+    - pip check
 
 about:
-  home: http://www.pandapower.org
+  home: https://www.pandapower.org
   summary: An easy to use open source tool for power system modeling, analysis and optimization with a high degree of automation.
+  description: |
+    pandapower combines the data analysis library pandas and the power flow solver PYPOWER to create an
+    easy to use network calculation program aimed at automation of analysis and optimization in power systems.
   license: BSD-3-Clause
+  license_family: BSD
   license_file: LICENSE
+  dev_url: https://github.com/e2nIEE/pandapower
+  doc_url: https://pandapower.readthedocs.io
 
 extra:
   recipe-maintainers:
